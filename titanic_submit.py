@@ -31,7 +31,10 @@ else:
 def main():
     submit_path = root_path / "gender_submission.csv"
     submit = pd.read_csv(submit_path)
-    submit.to_csv(root_path / "submission.csv", index=False)
+    if is_kaggle:
+        submit.to_csv("submission.csv", index=False)
+    else:
+        submit.to_csv(root_path / "submission.csv", index=False)
 
 
 if __name__ == '__main__':
